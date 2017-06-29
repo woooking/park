@@ -1,0 +1,241 @@
+@labeledNumberInput(label: String, id: String) = {
+    <div class="form-group">
+        <label for="@id" class="col-sm-2 control-label">@label</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="@id" name="@id" value="0">
+        </div>
+    </div>
+}
+
+@checkbox(label: String, name: String) = {
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="@name">
+            @label
+        </label>
+    </div>
+}
+
+@radio(label: String, name: String, value: String) = {
+    <div class="radio">
+        <label>
+            <input type="radio" name="@name" value="@value">
+            @label
+        </label>
+    </div>
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>有关漳浦县公园游览情况的调查</title>
+
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" integrity="sha384-awusxf8AUojygHf2+joICySzB780jVvQaVCAt1clU3QsyAitLGul28Qxb2r1e5g+" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>有关漳浦县公园游览情况的调查</h1>
+            <form action="" method="post" class="form-horizontal">
+                <p class="form-control-static">
+                    1.请填写最近一个月，正常天气条件下，您每周游览下列公园的次数
+                </p>
+                @labeledNumberInput("鹿溪公园", "luxi-park")
+                @labeledNumberInput("西湖公园", "xihu-park")
+                @labeledNumberInput("江滨公园", "jiangbing-park")
+                @labeledNumberInput("印石公园", "yinshi-park")
+                <p class="form-control-static">
+                    2.请勾选您最近一次前往该公园所进行的活动
+                </p>
+                @checkbox("散步/跑步", "activity-walk")
+                @checkbox("使用健身器材运动", "activity-equipment")
+                @checkbox("跳广场舞", "activity-dance")
+                @checkbox("钓鱼", "activity-fishing")
+                @checkbox("野餐", "activity-picnic")
+                @checkbox("观看表演/电影", "activity-movie")
+                @checkbox("亲自/带孩子参加娱乐活动", "activity-entertainment")
+                @checkbox("吃烧烤", "activity-bbq")
+                <p class="form-control-static">
+                    3.（接上题）其中最主要的活动是
+                </p>
+                @radio("散步/跑步", "activity-most", "walk")
+                @radio("使用健身器材运动", "activity-most", "equipment")
+                @radio("跳广场舞", "activity-most", "dance")
+                @radio("钓鱼", "activity-most", "fishing")
+                @radio("野餐", "activity-most", "picnic")
+                @radio("观看表演/电影", "activity-most", "movie")
+                @radio("亲自/带孩子参加娱乐活动", "activity-most", "entertainment")
+                @radio("吃烧烤", "activity-most", "bbq")
+                <p class="form-control-static">
+                    4.请选出您前往该公园的主要交通方式
+                </p>
+                @radio("步行", "transportation", "walk")
+                @radio("自行车", "transportation", "bicycle")
+                @radio("电动车", "transportation", "electric-car")
+                @radio("摩托车", "transportation", "motocycle")
+                @radio("公交车", "transportation", "bus")
+                @radio("轿车", "transportation", "car")
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="transportation" value="other">
+                        其他
+                        <input type="text" name="transportation-other">
+                    </label>
+                </div>
+                <p class="form-control-static">
+                    5.从您家中到该公园，共用时多少分钟
+                </p>
+                <input type="number" class="form-control" name="time" value="0">
+                <p class="form-control-static">
+                    6.请填写您上次在该公园游览过程中的消费情况（若无消费则填0）
+                </p>
+                @labeledNumberInput("总消费", "cost-total")
+                @labeledNumberInput("交通花费（包括车票、油费等）", "cost-traffic")
+                @labeledNumberInput("餐饮花费", "cost-food")
+                @labeledNumberInput("娱乐花费（包括游乐设施等）", "cost-entertainment")
+                @labeledNumberInput("其他花费", "cost-other")
+
+                <div class="form-group">
+                    <p>
+                    7.请根据实际情况，选择您在这个公园游览时的体验
+                    </p>
+                    <table>
+                        <tr>
+                            <th>很不对</th>
+                            <th>有点不对</th>
+                            <th>有点对</th>
+                            <th>很对</th>
+                        </tr>
+                        <tr>
+                            <td colspan="4">这个公园很拥挤</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">这个公园很吵</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">这个公园设施很完善</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">我在这个公园游览感觉很好</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                            <td><input type="radio"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-group">
+                    <p>
+                    8.如果您在游览该公园的整个旅途中的花费达到。。。元，您将
+                    </p>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">会来这个公园</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">不会来这个公园</label>
+                </div>
+                <div class="form-group">
+                    <p>
+                    9.如果您在游览该公园的整个旅途中的总花费达到您填写的数字，您将不会前往这个公园
+                    </p>
+                    <input type="text" class="form-control" name="luxi">
+                </div>
+                <div class="form-group">
+                    <p>
+                    10.如果因为要花这么多钱您不来这个公园了，您将会
+                    </p>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">去其他公园</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">哪个公园都不去</label>
+                </div>
+                <div class="form-group">
+                    <p>
+                    11.您的性别
+                    </p>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">男</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">女</label>
+                </div>
+                <div class="form-group">
+                    <p>
+                    12.您的年龄
+                    </p>
+                    <input type="text" class="form-control" name="luxi">
+                </div>
+                <div class="form-group">
+                    <p>
+                    13.您的受教育情况（请选择您的最高学历）
+                    </p>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">小学</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">初中</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">高中/中专</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">大学本科/大专</label>
+                    <div class="col-sm-2">
+                        <input type="radio" class="form-control" name="luxi" value="0">
+                    </div>
+                    <label class="col-sm-10 control-label">硕士/博士</label>
+                </div>
+                <div class="form-group">
+                    <p>
+                    14.请填写您的月税后收入情况
+                    </p>
+                    <input type="text" class="form-control" name="luxi">
+                </div>
+            </form>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="http://malsup.github.com/jquery.form.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/js/handlebars-v4.0.5.js"></script>
+    </body>
+</html>
